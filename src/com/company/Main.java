@@ -70,18 +70,12 @@ public class Main {
             byte[] b = a[i].getBytes();
             int suml = 0;
             int sumr = 0;
-            for (int j = 0; j < b.length / 2; j++) {
-                byte[] c = new byte[1];
-                c[0] = b[j];
-                String p = new String(c);
-                suml += Integer.parseInt(p);
-            }
-
-            for (int y = b.length - 1; y > (b.length - 1) / 2; y--) {
-                byte[] c = new byte[1];
-                c[0] = b[y];
-                String p = new String(c);
-                sumr += Integer.parseInt(p);
+            for (int j = 0; j < b.length; j++) {
+                if (j < b.length / 2) {
+                    suml += Character.getNumericValue(b[j]);
+                } else {
+                    sumr += Character.getNumericValue(b[j]);
+                }
             }
             if (b.length % 2 != 0) {
                 System.out.println("Колличество символов во введенном числе нечетное, такое число не может быть счастливым");
